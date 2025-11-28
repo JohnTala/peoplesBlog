@@ -1,15 +1,14 @@
-
-export async function loadPartial(id, url, callback) {
-  const target = document.getElementById(id);
-  if (!target) return;
+export async function loadPartial(elementId, url, callback) {
+  const el = document.querySelector(elementId === 'header' ? 'header' : 'footer');
+  if (!el) return;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to load partial: ${url}`);
-    target.innerHTML = await response.text();
+    const res = await fetch(url);
+    const html = await res.text();
+    el.innerHTML = html;
 
     if (callback) callback();
   } catch (err) {
-    console.error(err);
+    console.error(`Failed to load partial ${url}:`, err);
   }
 }
