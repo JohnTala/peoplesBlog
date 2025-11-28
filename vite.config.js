@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: 'src',
-  base: '/my-peoplesblog/', 
+  base: './',        // relative base for local dev and GitHub Pages
   server: {
     port: 3000
   },
