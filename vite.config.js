@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: 'src',
+  base: '/my-peoplesblog/', 
   server: {
     port: 3000
   },
@@ -9,4 +10,4 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true
   }
-})
+});
