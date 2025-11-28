@@ -12,11 +12,11 @@ const basePath = window.location.pathname.includes('/pages/')
   : '';
 
 // Load header + footer
-loadPartial('header', `${basePath}partials/header.html`, hamburgerMenu);
+loadPartial('header', `${basePath}partials/header.html`, setupHamburger);
 loadPartial('footer', `${basePath}partials/footer.html`);
 
-//  This runs AFTER the header loads
-function hamburgerMenu() {
+// 🎉 This runs AFTER the header loads
+function setupHamburger() {
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
 
