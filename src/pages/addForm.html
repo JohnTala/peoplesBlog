@@ -9,20 +9,19 @@
   <script type="module" src="../js/main.js"></script>
 </head>
 <body>
-  <header></header>
+  <header></header> <!-- dynamically loaded -->
 
   <main>
     <h2>Add a New Post</h2>
     <div class="addPost">
-        <form>
-            <input type="text" required name="title" placeholder="Title here">
-            <textarea placeholder="Post here" name="post"></textarea>
-            <!-- <input type="number" required name="likes" style="width: 50px;"> -->
-            <button>Add post</button>
-        </form>
+      <form id="addPostForm">
+        <input type="text" name="title" placeholder="Title here" required>
+        <textarea name="post" placeholder="Write your post here..." required></textarea>
+        <button type="submit">Add Post</button>
+      </form>
     </div>
   </main>
 
-  <footer></footer>
+  <footer></footer> <!-- dynamically loaded -->
 </body>
 </html>

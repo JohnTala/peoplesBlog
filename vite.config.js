@@ -2,12 +2,12 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: 'src',                 // source folder
-  base: './',                  // relative paths for dev & GitHub Pages
+  base: '/my-peoplesblog/',    // replace with your repo name for GitHub Pages
   server: {
-    port: 3000,                // dev server port
+    port: 3000,
   },
   build: {
-    outDir: '../dist',         // output folder
+    outDir: '../dist',
     emptyOutDir: true,
   },
 });

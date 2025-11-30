@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>People's Blogs | Post Reviews</title>
+  <title>Post Reviews | People's Blogs</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <script type="module" src="../js/main.js"></script>
 </head>
 <body>
-  <header>
-  </header>
+  <header></header> <!-- dynamically loaded -->
 
   <main>
     <h1>Post Reviews</h1>
-   <div class="review-form">
-        <form id="reviewForm" action="reviews.html" method="get">
+    <div class="review-form">
+      <form id="reviewForm">
         <label for="name">Your Name</label>
         <input type="text" id="name" name="name" placeholder="Your name" required>
 
@@ -24,24 +23,24 @@
 
         <label for="rating">Rating</label>
         <select id="rating" name="rating" required>
-        <option value="">Choose a rating</option>
-        <option value="5">★★★★★ - Excellent</option>
-        <option value="4">★★★★☆ - Good</option>
-        <option value="3">★★★☆☆ - Average</option>
-        <option value="2">★★☆☆☆ - Poor</option>
-        <option value="1">★☆☆☆☆ - Terrible</option>
+          <option value="">Choose a rating</option>
+          <option value="5">★★★★★ - Excellent</option>
+          <option value="4">★★★★☆ - Good</option>
+          <option value="3">★★★☆☆ - Average</option>
+          <option value="2">★★☆☆☆ - Poor</option>
+          <option value="1">★☆☆☆☆ - Terrible</option>
         </select>
 
         <label for="message">Your Review</label>
         <textarea id="message" name="message" rows="5" placeholder="Write your thoughts..." required></textarea>
 
         <button type="submit">Submit Review</button>
-  </form>
+      </form>
 
-  <div id="reviewDisplay" class="preview"></div>
+      <div id="reviewDisplay" class="preview"></div>
     </div>
   </main>
 
-  <footer></footer>
+  <footer></footer> <!-- dynamically loaded -->
 </body>
 </html>
