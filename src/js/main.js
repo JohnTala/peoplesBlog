@@ -44,7 +44,12 @@
 import { loadPartial } from './utils.js';
 
 // Use absolute paths to public folder
-const basePath = '/partials/';
+// const basePath = '/partials/';
+
+const basePath = import.meta.env.MODE === 'production' 
+  ? '/my-peoplesblog/partials/' 
+  : '/partials/';
+
 
 // Load header
 loadPartial('header', `${basePath}header.html`, () => {

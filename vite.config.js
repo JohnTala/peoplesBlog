@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: 'src',                 // source folder
-  base: '/my-peoplesblog/',    // replace with your repo name for GitHub Pages
+  root: 'src', // source folder
+  base: process.env.NODE_ENV === 'production' ? '/my-peoplesblog/' : '/', 
   server: {
     port: 3000,
   },
