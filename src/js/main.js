@@ -53,9 +53,10 @@ if (window.location.pathname.includes('/pages/pages/')) {
 import { loadPartial } from './utils.js';
 
 
-// Load header & footer from public folder
-loadPartial('header', '/partials/header.html', () => {
-  // Hamburger menu toggle
+const BASE = import.meta.env.BASE_URL || '/';
+
+// Load header/footer
+loadPartial('header', `${BASE}partials/header.html`, () => {
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
   if (menuBtn && navList) {
@@ -65,8 +66,7 @@ loadPartial('header', '/partials/header.html', () => {
     });
   }
 });
-
-loadPartial('footer', '/partials/footer.html');
+loadPartial('footer', `${BASE}partials/footer.html`);
 
 // Set year & last modified
 document.addEventListener('DOMContentLoaded', () => {
