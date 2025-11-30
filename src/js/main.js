@@ -52,14 +52,11 @@ if (window.location.pathname.includes('/pages/pages/')) {
 
 import { loadPartial } from './utils.js';
 
-// Determine relative path to partials
-const basePath = window.location.pathname.includes('/pages/') ? '../partials/' : './partials/';
-
-// Load header
-loadPartial('header', `${basePath}header.html`, () => {
+// Load header + footer from public folder
+loadPartial('header', '/partials/header.html', () => {
+  // Hamburger menu setup
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
-
   if (menuBtn && navList) {
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('show');
@@ -68,10 +65,9 @@ loadPartial('header', `${basePath}header.html`, () => {
   }
 });
 
-// Load footer
-loadPartial('footer', `${basePath}footer.html`);
+loadPartial('footer', '/partials/footer.html');
 
-// Update year & last modified
+// DOMContentLoaded for year & last modified
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
