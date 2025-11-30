@@ -5,23 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add New Post | People's Blogs</title>
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/main.js" defer></script>
 </head>
 <body>
-  <header></header> <!-- dynamically loaded -->
+  <header></header>
 
   <main>
     <h2>Add a New Post</h2>
     <div class="addPost">
-      <form id="addPostForm">
+      <form>
         <input type="text" name="title" placeholder="Title here" required>
-        <textarea name="post" placeholder="Write your post here..." required></textarea>
-        <button type="submit">Add Post</button>
+        <textarea name="post" placeholder="Post here"></textarea>
+        <button type="submit">Add post</button>
       </form>
     </div>
   </main>
 
-  <footer></footer> <!-- dynamically loaded -->
+  <footer></footer>
 </body>
 </html>

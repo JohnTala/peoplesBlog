@@ -41,19 +41,18 @@
 //   const lastModified = document.getElementById('lastModifiedDate');
 //   if (lastModified) lastModified.textContent = `Last Modified: ${document.lastModified}`;
 // });
+
+
+// Fix accidental duplicated /pages/pages/ URLs
+if (window.location.pathname.includes('/pages/pages/')) {
+  const corrected = window.location.pathname.replace('/pages/pages/', '/pages/');
+  window.location.replace(corrected);
+}
 import { loadPartial } from './utils.js';
 
-// Use absolute paths to public folder
-// const basePath = '/partials/';
+const basePath = './partials/'; // relative path for src/
 
-const basePath = import.meta.env.MODE === 'production' 
-  ? '/my-peoplesblog/partials/' 
-  : '/partials/';
-
-
-// Load header
 loadPartial('header', `${basePath}header.html`, () => {
-  // Mobile menu toggle
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
   if (menuBtn && navList) {
@@ -64,10 +63,8 @@ loadPartial('header', `${basePath}header.html`, () => {
   }
 });
 
-// Load footer
 loadPartial('footer', `${basePath}footer.html`);
 
-// Footer dynamic year + last modified
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();

@@ -6,9 +6,7 @@ export async function loadPartial(selector, url, callback) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
-
     el.innerHTML = html;
-
     if (callback) callback();
   } catch (err) {
     console.error(`Failed to load partial "${url}":`, err);
