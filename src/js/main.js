@@ -1,78 +1,66 @@
-// import { loadPartial } from './utils.js';
+// Import logo (Vite will hash it on build)
+import logo from '../images/logo.png';
 
-// // Fix accidental duplicated /pages/pages/ URLs
-// if (window.location.pathname.includes('/pages/pages/')) {
-//   const corrected = window.location.pathname.replace('/pages/pages/', '/pages/');
-//   window.location.replace(corrected);
-// }
+// GitHub Pages base path
+const base = '/peoplesBlog/';
 
-// // Detect correct path for partials
-// const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+// Get elements
+const headerEl = document.getElementById('header');
+const footerEl = document.getElementById('footer');
 
-// // Load header + footer
-// loadPartial('header', `${basePath}partials/header.html`, () => {
-//   // Hamburger menu setup
-//   const menuBtn = document.getElementById('menu');
-//   const navList = document.querySelector('.navigation');
-//   if (menuBtn && navList) {
-//     menuBtn.addEventListener('click', () => {
-//       menuBtn.classList.toggle('show');
-//       navList.classList.toggle('show');
-//     });
-//   }
+// Header insertion
 
-//   // Fix logo path depending on page depth
-//   const isInsidePages = window.location.pathname.includes('/pages/');
-//   const logo = document.querySelector('header img.logo');
-//   if (logo) {
-//     logo.src = isInsidePages
-//       ? '../assets/images/logo.png'
-//       : 'assets/images/logo.png';
-//   }
-// });
+headerEl.innerHTML = `
+  <div class="navbar">
+    <div class="logo">
+      <a href="${base}">
+        <img id="siteLogo" alt="People's Blogs Logo" class="logo-img">
+      </a>
+      <span>People's Blogs</span>
+    </div>
 
-// loadPartial('footer', `${basePath}partials/footer.html`);
+    <button id="menu" aria-label="Toggle navigation" class="menu-btn">&#9776;</button>
 
-// // DOMContentLoaded for year & last modified
-// document.addEventListener('DOMContentLoaded', () => {
-//   const yearSpan = document.getElementById('currentYear');
-//   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+    <nav>
+      <ul class="navigation">
+        <li><a href="${base}" class="nav-link">Home</a></li>
+        <li><a href="${base}pages/about.html" class="nav-link">About</a></li>
+        <li><a href="${base}pages/addForm.html" class="nav-link">Add Post</a></li>
+        <li><a href="${base}pages/reviews.html" class="nav-link">Reviews</a></li>
+      </ul>
+    </nav>
+  </div>
+`;
 
-//   const lastModified = document.getElementById('lastModifiedDate');
-//   if (lastModified) lastModified.textContent = `Last Modified: ${document.lastModified}`;
-// });
+//  Set logo image
+document.getElementById('siteLogo').src = logo;
 
+//  Mobile menu toggle
+const menuBtn = document.getElementById('menu');
+const navList = document.querySelector('.navigation');
+menuBtn.addEventListener('click', () => {
+  navList.classList.toggle('show');
+  menuBtn.classList.toggle('show');
+});
 
-// Fix accidental duplicated /pages/pages/ URLs
-if (window.location.pathname.includes('/pages/pages/')) {
-  const corrected = window.location.pathname.replace('/pages/pages/', '/pages/');
-  window.location.replace(corrected);
-}
-import { loadPartial } from './utils.js';
-
-
-// Determine path to partials based on page location
-const isInPages = window.location.pathname.includes('/pages/');
-const basePath = isInPages ? '../partials/' : './partials/';
-
-loadPartial('header', `${basePath}header.html`, () => {
-  const menuBtn = document.getElementById('menu');
-  const navList = document.querySelector('.navigation');
-  if (menuBtn && navList) {
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('show');
-      navList.classList.toggle('show');
-    });
+//  Highlight active nav link
+const current = window.location.pathname;
+document.querySelectorAll('.nav-link').forEach(link => {
+  const path = link.getAttribute('href');
+  if (current.endsWith(path.replace(base, ''))) {
+    link.classList.add('active');
   }
 });
 
-loadPartial('footer', `${basePath}footer.html`);
+//Footer insertion
+footerEl.innerHTML = `
+  <p>&copy; <span id="currentYear"></span> 🌸 Saidi Talatala 🌸 | People's Blogs. All rights reserved</p>
+  <p id="lastModifiedDate"></p>
+`;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const yearSpan = document.getElementById('currentYear');
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+// footer dynamic year
+document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  const lastModified = document.getElementById('lastModifiedDate');
-  if (lastModified) lastModified.textContent = `Last Modified: ${document.lastModified}`;
-});
-
+//Footer last modified
+document.getElementById('lastModifiedDate').textContent =
+  "Last Modified: " + document.lastModified;
