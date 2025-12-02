@@ -43,20 +43,19 @@
 // });
 
 
-
 // Fix accidental duplicated /pages/pages/ URLs
 if (window.location.pathname.includes('/pages/pages/')) {
   const corrected = window.location.pathname.replace('/pages/pages/', '/pages/');
   window.location.replace(corrected);
 }
-
 import { loadPartial } from './utils.js';
 
 
-const BASE = import.meta.env.BASE_URL || '/';
+// Determine path to partials based on page location
+const isInPages = window.location.pathname.includes('/pages/');
+const basePath = isInPages ? '../partials/' : './partials/';
 
-// Load header/footer
-loadPartial('header', `${BASE}partials/header.html`, () => {
+loadPartial('header', `${basePath}header.html`, () => {
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
   if (menuBtn && navList) {
@@ -66,9 +65,9 @@ loadPartial('header', `${BASE}partials/header.html`, () => {
     });
   }
 });
-loadPartial('footer', `${BASE}partials/footer.html`);
 
-// Set year & last modified
+loadPartial('footer', `${basePath}footer.html`);
+
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
@@ -76,3 +75,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const lastModified = document.getElementById('lastModifiedDate');
   if (lastModified) lastModified.textContent = `Last Modified: ${document.lastModified}`;
 });
+
