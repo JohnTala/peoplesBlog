@@ -1,7 +1,7 @@
 import { loadPartial } from './utils.js';
 
-// Base path for partials in GitHub Pages
-const basePath = '/peoplesBlog/partials/';
+// Use Vite base URL
+const basePath = import.meta.env.BASE_URL + 'partials/';
 
 // Load header
 loadPartial('header', `${basePath}header.html`, () => {
@@ -19,7 +19,7 @@ loadPartial('header', `${basePath}header.html`, () => {
 // Load footer
 loadPartial('footer', `${basePath}footer.html`);
 
-// Dynamic year and last modified date
+// Dynamic year and last modified
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
