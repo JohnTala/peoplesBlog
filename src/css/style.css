@@ -43,7 +43,7 @@ h1, h2, h3 {
 }
 
 /* Header */
-header {
+#header {
     background-color: #ffffff;
     display: grid;
     grid-gap: 1rem;
@@ -310,7 +310,7 @@ nav a:hover {
 
 /* Larger Views */
 @media (min-width: 740px) {
-    header {
+    #header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -331,11 +331,11 @@ nav a:hover {
 }
 
 .logo {
-  width: 100px; /* adjust as needed */
+  width: 150px; /* adjust as needed */
   height: auto;
   display: block;
 }
-header a {
+#header a {
   display: inline-block; /* optional, ensures proper alignment */
 }
 
@@ -360,7 +360,7 @@ header a {
 }
 
 /* Footer */
-footer {
+#footer {
     background-color: #f9f9f9;
     text-align: center;
     padding: 30px 20px;
@@ -380,7 +380,7 @@ footer {
 
 @media (max-width: 768px) {
   .logo {
-    width: 70px;
+    width: 120px;
   }
 }
 

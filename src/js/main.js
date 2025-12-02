@@ -4,17 +4,16 @@ import logo from '../images/logo.png';
 // GitHub Pages base path
 const base = '/peoplesBlog/';
 
-// Get elements
-const headerEl = document.querySelector('header');
-const footerEl = document.querySelector('footer');
+// Get header and footer elements
+const headerEl = document.getElementById('header');
+const footerEl = document.getElementById('footer');
 
-// Header insertion
-
+// -------- Header --------
 headerEl.innerHTML = `
   <div class="navbar">
     <div class="logo">
       <a href="${base}">
-        <img id="siteLogo" alt="People's Blogs Logo" class="logo-img">
+        <img id="siteLogo" alt="People's Blogs Logo" class="logo">
       </a>
       <span>People's Blogs</span>
     </div>
@@ -32,10 +31,10 @@ headerEl.innerHTML = `
   </div>
 `;
 
-//  Set logo image
+// Set logo image
 document.getElementById('siteLogo').src = logo;
 
-//  Mobile menu toggle
+// -------- Mobile menu toggle --------
 const menuBtn = document.getElementById('menu');
 const navList = document.querySelector('.navigation');
 menuBtn.addEventListener('click', () => {
@@ -43,24 +42,26 @@ menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('show');
 });
 
-//  Highlight active nav link
-const current = window.location.pathname;
+// -------- Highlight active nav link --------
+const currentPath = window.location.pathname.replace(base, '/'); // normalize path
 document.querySelectorAll('.nav-link').forEach(link => {
-  const path = link.getAttribute('href');
-  if (current.endsWith(path.replace(base, ''))) {
+  const linkPath = link.getAttribute('href').replace(base, '/');
+  if (linkPath === currentPath || (currentPath === '/' && linkPath === '/')) {
     link.classList.add('active');
+  } else {
+    link.classList.remove('active');
   }
 });
 
-//Footer insertion
+// -------- Footer --------
 footerEl.innerHTML = `
   <p>&copy; <span id="currentYear"></span> 🌸 Saidi Talatala 🌸 | People's Blogs. All rights reserved</p>
   <p id="lastModifiedDate"></p>
 `;
 
-// footer dynamic year
+// Footer dynamic year
 document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-//Footer last modified
+// Footer last modified date
 document.getElementById('lastModifiedDate').textContent =
   "Last Modified: " + document.lastModified;
