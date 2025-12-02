@@ -1,25 +1,36 @@
 import { loadPartial } from './utils.js';
 
-// Use Vite base URL
-const basePath = import.meta.env.BASE_URL + 'partials/';
+// Fix accidental /pages/pages/... URLs
+if (window.location.pathname.includes('/pages/pages/')) {
+  const corrected = window.location.pathname.replace('/pages/pages/', '/pages/');
+  window.location.replace(corrected);
+}
 
-// Load header
-loadPartial('header', `${basePath}header.html`, () => {
+// Load header/footer partials
+loadPartial('header', '/partials/header.html', () => {
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
-
   if (menuBtn && navList) {
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('show');
       navList.classList.toggle('show');
     });
   }
+
+  // Highlight current page
+  const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 });
 
-// Load footer
-loadPartial('footer', `${basePath}footer.html`);
+loadPartial('footer', '/partials/footer.html');
 
-// Dynamic year and last modified
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
