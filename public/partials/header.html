@@ -1,92 +1,17 @@
-<header>
-  <div class="navbar">
-    <div class="logo">
-      <a href="/"><img src="/images/logo.png" alt="People's Blogs Logo" class="logo-img"></a>
-      <span>People's Blogs</span>
-    </div>
-
-    <button id="menu" aria-label="Toggle navigation" class="menu-btn">&#9776;</button>
-
-    <nav>
-      <ul class="navigation">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/addForm.html">Add Post</a></li>
-        <li><a href="/pages/reviews.html">Reviews</a></li>
-      </ul>
-    </nav>
+<div class="navbar">
+  <div class="logo">
+    <a href="/peoplesBlog/"><img src="/peoplesBlog/images/logo.png" alt="People's Blogs Logo" class="logo-img"></a>
+    <span>People's Blogs</span>
   </div>
-</header>
 
-<style>
-/* Navbar container */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  position: relative;
-}
+  <button id="menu" aria-label="Toggle navigation" class="menu-btn">&#9776;</button>
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-img {
-  width: 40px;
-  height: auto;
-}
-
-/* Navigation links */
-.navigation {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-.navigation li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-}
-.navigation li a.active {
-  text-decoration: underline;
-}
-
-/* Hamburger menu button */
-.menu-btn {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .navigation {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #444;
-    width: 200px;
-    padding: 10px;
-    gap: 10px;
-    z-index: 1000;
-  }
-  .navigation.show {
-    display: flex;
-  }
-  .menu-btn {
-    display: block;
-  }
-}
-</style>
+  <nav>
+    <ul class="navigation">
+      <li><a href="/peoplesBlog/" class="active">Home</a></li>
+      <li><a href="/peoplesBlog/pages/about.html">About</a></li>
+      <li><a href="/peoplesBlog/pages/addForm.html">Add Post</a></li>
+      <li><a href="/peoplesBlog/pages/reviews.html">Reviews</a></li>
+    </ul>
+  </nav>
+</div>
