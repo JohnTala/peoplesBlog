@@ -1,19 +1,18 @@
-// Import logo (Vite will hash it on build)
+// src/js/main.js
 import logo from '../images/logo.png';
 
-// GitHub Pages base path
-const base = '/peoplesBlog/';
-
-// Get header and footer elements
 const headerEl = document.getElementById('header');
 const footerEl = document.getElementById('footer');
 
-// -------- Header --------
+// Detect base path (Vite dev vs production)
+const base = import.meta.env.PROD ? '/peoplesBlog/' : '/';
+
+// ------------------ HEADER ------------------
 headerEl.innerHTML = `
   <div class="navbar">
     <div class="logo">
       <a href="${base}">
-        <img id="siteLogo" alt="People's Blogs Logo" class="logo">
+        <img id="siteLogo" src="${logo}" alt="People's Blogs Logo" class="logo">
       </a>
       <span>People's Blogs</span>
     </div>
@@ -31,37 +30,32 @@ headerEl.innerHTML = `
   </div>
 `;
 
-// Set logo image
-document.getElementById('siteLogo').src = logo;
-
-// -------- Mobile menu toggle --------
+// Mobile menu
 const menuBtn = document.getElementById('menu');
 const navList = document.querySelector('.navigation');
-menuBtn.addEventListener('click', () => {
-  navList.classList.toggle('show');
-  menuBtn.classList.toggle('show');
-});
 
-// -------- Highlight active nav link --------
-const currentPath = window.location.pathname.replace(base, '/'); // normalize path
+if (menuBtn && navList) {
+  menuBtn.addEventListener('click', () => {
+    navList.classList.toggle('show');
+    menuBtn.classList.toggle('show');
+  });
+}
+
+// Active nav link
+const currentPath = window.location.pathname.replace(base, '/');
 document.querySelectorAll('.nav-link').forEach(link => {
   const linkPath = link.getAttribute('href').replace(base, '/');
-  if (linkPath === currentPath || (currentPath === '/' && linkPath === '/')) {
+  if (currentPath === linkPath || (currentPath === '/' && linkPath === '/')) {
     link.classList.add('active');
-  } else {
-    link.classList.remove('active');
   }
 });
 
-// -------- Footer --------
+// ------------------ FOOTER ------------------
 footerEl.innerHTML = `
   <p>&copy; <span id="currentYear"></span> 🌸 Saidi Talatala 🌸 | People's Blogs. All rights reserved</p>
   <p id="lastModifiedDate"></p>
 `;
 
-// Footer dynamic year
 document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-// Footer last modified date
 document.getElementById('lastModifiedDate').textContent =
-  "Last Modified: " + document.lastModified;
+  'Last Modified: ' + document.lastModified;
