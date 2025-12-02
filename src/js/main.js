@@ -6,10 +6,17 @@ if (window.location.pathname.includes('/pages/pages/')) {
   window.location.replace(corrected);
 }
 
+
+
+// Base path for GitHub Pages project site
+const basePath = '/peoplesBlog/';
+
 // Load header/footer partials
-loadPartial('header', '/partials/header.html', () => {
+loadPartial('header', `${basePath}partials/header.html`, () => {
   const menuBtn = document.getElementById('menu');
   const navList = document.querySelector('.navigation');
+
+  // Toggle menu
   if (menuBtn && navList) {
     menuBtn.addEventListener('click', () => {
       menuBtn.classList.toggle('show');
@@ -18,19 +25,17 @@ loadPartial('header', '/partials/header.html', () => {
   }
 
   // Highlight current page
+  const currentPath = window.location.pathname.split('/').pop();
   const navLinks = document.querySelectorAll('.nav-link');
-  const currentPath = window.location.pathname;
   navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    const linkPath = link.getAttribute('href').split('/').pop();
+    link.classList.toggle('active', linkPath === currentPath);
   });
 });
 
-loadPartial('footer', '/partials/footer.html');
+loadPartial('footer', `${basePath}partials/footer.html`);
 
+// Populate dynamic year and last modified
 document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('currentYear');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
