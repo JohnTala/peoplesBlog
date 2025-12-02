@@ -1,12 +1,10 @@
-// Load a partial HTML (header/footer) into the page
 export async function loadPartial(elementId, url, callback) {
-  const el = document.getElementById(elementId); // select by ID
+  const el = document.querySelector(elementId === 'header' ? 'header' : 'footer');
   if (!el) return;
 
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    
     const html = await res.text();
     el.innerHTML = html;
 

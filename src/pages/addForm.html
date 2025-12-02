@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add New Post | People's Blogs</title>
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../images/logo.png" type="image/x-icon">
-  <script type="module" src="../js/main.js" defer></script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script type="module" src="../js/main.js"></script>
 </head>
 <body>
-  <header id="header"></header>
+  <header></header>
 
   <main>
     <h2>Add a New Post</h2>
@@ -27,6 +27,27 @@
     </div>
   </main>
 
-  <footer id="footer"></footer>
+  <footer></footer>
+
+  <script>
+    const form = document.getElementById('postForm');
+    const preview = document.getElementById('postPreview');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = form.title.value.trim();
+      const content = form.content.value.trim();
+
+      if (title && content) {
+        preview.innerHTML += `
+          <div class="post">
+            <h3>${title}</h3>
+            <p>${content}</p>
+          </div>
+        `;
+        form.reset();
+      }
+    });
+  </script>
 </body>
 </html>
