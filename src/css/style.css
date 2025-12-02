@@ -1,103 +1,26 @@
-/* ==============================
-   Base Reset & Typography
-============================== */
+
+
+/* Base Reset and Typography */
 body {
+    background: linear-gradient(135deg, #f5f7fa, #e8f0fe);
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
     color: #2c3e50;
-    background: linear-gradient(135deg, #f5f7fa, #e8f0fe);
+    line-height: 1.6;
+	font-family: 'Inter', sans-serif;
+
 }
 
+
+
+/* Headings */
 h1, h2, h3 {
     margin-top: 0;
     font-weight: 600;
     color: #333;
 }
 
-/* ==============================
-   Header & Navigation
-============================== */
-#header {
-    background-color: #ffffff;
-    padding: 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-#header .logo {
-    width: 150px;
-}
-
-#header .logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-#header nav {
-    width: 100%;
-}
-
-#header nav ul {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    max-width: 760px;
-}
-
-#header nav li {
-    display: none;
-}
-
-#header nav a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    font-weight: 500;
-    transition: background 0.3s, color 0.3s;
-}
-
-#header nav a:hover {
-    background-color: #d6e4f0;
-    color: #000;
-}
-
-#header nav .active {
-    color: #ffd700;
-}
-
-/* Hamburger Menu */
-#menu {
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.5rem 0.75rem;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#menu.show::before {
-    content: "✕";
-}
-
-.show li {
-    display: block;
-}
-
-/* ==============================
-   Search Form
-============================== */
+/* Search Form */
 .search {
     margin: 30px auto 0 auto;
     max-width: 600px;
@@ -116,71 +39,207 @@ h1, h2, h3 {
 .search input[type="text"]:focus {
     outline: none;
     border-color: #1976d2;
-    box-shadow: 0 4px 12px rgba(25,118,210,0.25);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
 }
 
-/* ==============================
-   Card Styles (About, Add Post, Reviews)
-============================== */
-.card {
+/* Header */
+header {
+    background-color: #ffffff;
+    display: grid;
+    grid-gap: 1rem;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Navigation */
+nav {
+    background-color: #36454f;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    text-decoration: none;
+    background-color: #d6e4f0;
+    color: #000;
+}
+
+.active {
+    color: #ffd700;
+}
+
+.preview a{
+    
+  color: #36cca2;
+  text-decoration: none;
+
+}
+
+/* About page */
+.aboutPost {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 60px auto;
     background-color: #ffffffee;
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-.card p {
+.aboutPost:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
+.aboutPost p {
     margin-bottom: 24px;
     color: #37474f;
     font-size: 1.05rem;
 }
 
-/* Forms (Add Post / Review) */
-.addPost form,
-.review-form form {
+/* Optional: subtle fade-in animation */
+.aboutPost {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Add Post Form */
+.addPost {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    background-color: #ffffffee;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.addPost form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .addPost input[type="text"],
-.addPost textarea,
-.review-form input[type="text"],
-.review-form input[type="email"],
-.review-form select,
-.review-form textarea {
-    font-family: inherit;
+.addPost textarea {
     font-size: 1rem;
     padding: 14px 16px;
     border-radius: 12px;
     border: 1px solid #ccc;
     resize: vertical;
     transition: border 0.3s, box-shadow 0.3s;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: inherit;
 }
 
-.addPost input:focus,
-.addPost textarea:focus,
-.review-form input:focus,
-.review-form textarea:focus,
-.review-form select:focus {
+.addPost input[type="text"]:focus,
+.addPost textarea:focus {
     outline: none;
     border-color: #1976d2;
-    box-shadow: 0 4px 12px rgba(25,118,210,0.2);
+    box-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
 }
 
-.addPost textarea,
-.review-form textarea {
+.addPost textarea {
     min-height: 150px;
 }
 
-.addPost button,
+.addPost button {
+    padding: 12px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addPost button:hover {
+    background-color: #0d47a1;
+}
+
+/* Reviews form */
+.review-form {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Review Form Section */
+.review-form {
+     max-width: 1000px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.review-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.review-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.review-form label {
+    font-weight: 500;
+    color: #333;
+}
+
+.review-form input[type="text"],
+.review-form input[type="email"],
+.review-form select,
+.review-form textarea {
+    padding: 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.review-form input:focus,
+.review-form textarea:focus,
+.review-form select:focus {
+    border-color: #1976d2;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+    outline: none;
+}
+
+.review-form textarea {
+    resize: vertical;
+}
+
 .review-form button {
-    padding: 12-14px;
+    padding: 14px;
     background-color: #1976d2;
     color: #fff;
     border: none;
@@ -188,11 +247,8 @@ h1, h2, h3 {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 4px 14px rgba(25, 118, 210, 0.25);
     transition: background 0.3s, transform 0.2s;
-}
-
-.addPost button:hover {
-    background-color: #0d47a1;
 }
 
 .review-form button:hover {
@@ -200,16 +256,98 @@ h1, h2, h3 {
     transform: translateY(-2px);
 }
 
-/* ==============================
-   Blog Post Previews
-============================== */
+
+
+
+.review-form {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #37474f;
+} 
+
+
+/* Hamburger */
+#menu {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    background-color: #f0f0f0;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: " ";
+}
+
+#menu.show::before {
+    content: "✕";
+}
+
+.navigation {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.navigation li {
+    display: none;
+}
+
+.show li {
+    display: block;
+}
+
+/* Larger Views */
+@media (min-width: 740px) {
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .navigation li {
+        display: block;
+    }
+
+    #menu {
+        display: none;
+    }
+}
+
+.logo {
+  width: 100px; /* adjust as needed */
+  height: auto;
+  display: block;
+}
+header a {
+  display: inline-block; /* optional, ensures proper alignment */
+}
+
+
+/* Blog Post Previews */
 .preview {
     margin: 40px auto;
     max-width: 800px;
     background-color: #ffffff;
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .previewblog {
@@ -218,18 +356,11 @@ h1, h2, h3 {
     padding: 16px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.preview a {
-    color: #36cca2;
-    text-decoration: none;
-}
-
-/* ==============================
-   Footer
-============================== */
-#footer {
+/* Footer */
+footer {
     background-color: #f9f9f9;
     text-align: center;
     padding: 30px 20px;
@@ -237,36 +368,19 @@ h1, h2, h3 {
     color: #666;
     border-top: 1px solid #ddd;
     margin-top: 60px;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
     animation: fadeIn 1s ease-in-out;
 }
 
-/* ==============================
-   Animations
-============================== */
+/* Fade-in Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==============================
-   Responsive
-============================== */
 @media (max-width: 768px) {
-    #header .logo { width: 120px; }
+  .logo {
+    width: 70px;
+  }
 }
 
-@media (min-width: 740px) {
-    #header nav ul {
-        flex-direction: row;
-        justify-content: flex-end;
-    }
-
-    #header nav li {
-        display: block !important;
-    }
-
-    #menu {
-        display: none;
-    }
-}

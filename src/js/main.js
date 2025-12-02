@@ -5,8 +5,8 @@ import logo from '../images/logo.png';
 const base = '/peoplesBlog/';
 
 // Get elements
-const headerEl = document.getElementById('header');
-const footerEl = document.getElementById('footer');
+const headerEl = document.querySelector('header');
+const footerEl = document.querySelector('footer');
 
 // Header insertion
 
