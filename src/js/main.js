@@ -1,5 +1,5 @@
 // ------------------ BASE PATH ------------------
-const BASE = "/peoplesBlog/";
+const BASE = import.meta.env.PROD ? '/peoplesBlog/' : '/';
 
 // ------------------ ELEMENTS ------------------
 const headerEl = document.getElementById("header");
@@ -9,8 +9,8 @@ const footerEl = document.getElementById("footer");
 headerEl.innerHTML = `
   <div class="navbar">
     <div class="logo">
-      <a href="${BASE}src/index.html">
-        <img id="siteLogo" src="${BASE}src/images/logo.png" alt="People's Blogs Logo" class="logo">
+      <a href="${BASE}index.html">
+        <img id="siteLogo" src="${BASE}images/logo.png" alt="People's Blogs Logo" class="logo">
       </a>
       <span>People's Blogs</span>
     </div>
@@ -19,10 +19,10 @@ headerEl.innerHTML = `
 
     <nav>
       <ul class="navigation">
-        <li><a href="${BASE}src/index.html" class="nav-link">Home</a></li>
-        <li><a href="${BASE}src/about.html" class="nav-link">About</a></li>
-        <li><a href="${BASE}src/addForm.html" class="nav-link">Add Post</a></li>
-        <li><a href="${BASE}src/reviews.html" class="nav-link">Reviews</a></li>
+        <li><a href="${BASE}index.html" class="nav-link">Home</a></li>
+        <li><a href="${BASE}about.html" class="nav-link">About</a></li>
+        <li><a href="${BASE}addForm.html" class="nav-link">Add Post</a></li>
+        <li><a href="${BASE}reviews.html" class="nav-link">Reviews</a></li>
       </ul>
     </nav>
   </div>
