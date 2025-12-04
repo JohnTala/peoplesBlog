@@ -1,23 +1,25 @@
-
-
-/* Base Reset and Typography */
+/* Modern CSS theme for the About Blog page */
 body {
-    background: linear-gradient(135deg, #f5f7fa, #e8f0fe);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    background: linear-gradient(135deg, #e3f2fd, #fce4ec);
     margin: 0;
     padding: 0;
     color: #2c3e50;
-    line-height: 1.6;
-	font-family: 'Inter', sans-serif;
-
 }
 
-
+/* homepage */
 
 /* Headings */
 h1, h2, h3 {
     margin-top: 0;
     font-weight: 600;
     color: #333;
+}
+.logo {
+  width: 150px; /* adjust as needed */
+  height: auto;
+  display: block;
 }
 
 /* Search Form */
@@ -43,7 +45,8 @@ h1, h2, h3 {
 }
 
 /* Header */
-#header {
+#header
+ {
     background-color: #ffffff;
     display: grid;
     grid-gap: 1rem;
@@ -93,7 +96,119 @@ nav a:hover {
 
 }
 
-/* About page */
+/* Hamburger */
+#menu {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    background-color: #f0f0f0;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: " ";
+}
+
+#menu.show::before {
+    content: "✕";
+}
+
+.navigation {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.navigation li {
+    display: none;
+}
+
+.show li {
+    display: block;
+}
+
+/* Larger Views */
+@media (min-width: 740px) {
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .navigation li {
+        display: block;
+    }
+
+    #menu {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 120px;
+  }
+}
+
+/* Blog Post Previews */
+.preview {
+    margin: 40px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.previewblog {
+    background: #f7f9fa;
+    color: #444;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Main Container */
+.aboutpage {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Header Section */
+.headpage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.headpage h2 {
+    font-size: 2rem;
+    color: #37474f;
+    margin: 0;
+}
+
+/* About Page */
+
 .aboutPost {
     max-width: 900px;
     margin: 60px auto;
@@ -114,21 +229,38 @@ nav a:hover {
     font-size: 1.05rem;
 }
 
+
+
+#footer {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.95rem;
+    color: #666;
+    border-top: 1px solid #ddd;
+    margin-top: 60px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+    animation: fadeIn 1s ease-in-out;
+}
+
+
 /* Optional: subtle fade-in animation */
 .aboutPost {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Add Post Form */
-.addPost {
-    max-width: 900px;
-    margin: 0 auto 60px;
+/* Addform */
+
+.addFormpage {
+    max-width: 1000px;
+    margin: 40px auto;
     background-color: #ffffffee;
-    padding: 40px;
     border-radius: 16px;
+    padding: 40px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-in-out;
 }
+
 
 .addPost form {
     display: flex;
@@ -173,7 +305,8 @@ nav a:hover {
     background-color: #0d47a1;
 }
 
-/* Reviews form */
+
+/* review-form */
 .review-form {
     max-width: 1000px;
     margin: 40px auto;
@@ -183,6 +316,14 @@ nav a:hover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-in-out;
 }
+
+
+/* Single Post Content */
+
+* {
+  transition: all 0.3s ease-in-out;
+}
+
 
 /* Review Form Section */
 .review-form {
@@ -257,8 +398,6 @@ nav a:hover {
 }
 
 
-
-
 .review-form {
     max-width: 900px;
     margin: 40px auto;
@@ -273,114 +412,8 @@ nav a:hover {
 } 
 
 
-/* Hamburger */
-#menu {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.5rem 0.75rem;
-    background-color: #f0f0f0;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#menu::before {
-    content: " ";
-}
-
-#menu.show::before {
-    content: "✕";
-}
-
-.navigation {
-    list-style: none;
-    margin: 0 auto;
-    max-width: 760px;
-}
-
-.navigation li {
-    display: none;
-}
-
-.show li {
-    display: block;
-}
-
-/* Larger Views */
-@media (min-width: 740px) {
-    #header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    nav ul {
-        flex-direction: row;
-        justify-content: flex-end;
-    }
-
-    .navigation li {
-        display: block;
-    }
-
-    #menu {
-        display: none;
-    }
-}
-
-.logo {
-  width: 150px; /* adjust as needed */
-  height: auto;
-  display: block;
-}
-#header a {
-  display: inline-block; /* optional, ensures proper alignment */
-}
-
-
-/* Blog Post Previews */
-.preview {
-    margin: 40px auto;
-    max-width: 800px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.previewblog {
-    background: #f7f9fa;
-    color: #444;
-    padding: 16px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-/* Footer */
-#footer {
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.95rem;
-    color: #666;
-    border-top: 1px solid #ddd;
-    margin-top: 60px;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Fade-in Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 768px) {
-  .logo {
-    width: 120px;
-  }
 }
 
