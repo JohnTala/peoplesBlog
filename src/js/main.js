@@ -1,16 +1,16 @@
-// ------------------ BASE PATH ------------------
+// src/js/main.js
+import logo from '../images/logo.png';
+
 const BASE = import.meta.env.PROD ? '/peoplesBlog/' : '/';
+const headerEl = document.getElementById('header');
+const footerEl = document.getElementById('footer');
 
-// ------------------ ELEMENTS ------------------
-const headerEl = document.getElementById("header");
-const footerEl = document.getElementById("footer");
-
-// ------------------ HEADER ------------------
+// HEADER
 headerEl.innerHTML = `
   <div class="navbar">
     <div class="logo">
       <a href="${BASE}index.html">
-        <img id="siteLogo" src="${BASE}images/logo.png" alt="People's Blogs Logo" class="logo">
+        <img id="siteLogo" src="${logo}" alt="People's Blogs Logo" class="logo">
       </a>
       <span>People's Blogs</span>
     </div>
@@ -28,7 +28,7 @@ headerEl.innerHTML = `
   </div>
 `;
 
-// ------------------ MOBILE NAV ------------------
+// MOBILE MENU
 const menuBtn = document.getElementById("menu");
 const navList = document.querySelector(".navigation");
 
@@ -39,17 +39,15 @@ if (menuBtn && navList) {
   });
 }
 
-// ------------------ ACTIVE LINK ------------------
+// ACTIVE LINK
 const currentPage = window.location.pathname.split("/").pop();
 
 document.querySelectorAll(".nav-link").forEach(link => {
   const linkPage = link.getAttribute("href").split("/").pop();
-  if (currentPage === linkPage) {
-    link.classList.add("active");
-  }
+  if (currentPage === linkPage) link.classList.add("active");
 });
 
-// ------------------ FOOTER ------------------
+// FOOTER
 footerEl.innerHTML = `
   <p>&copy; <span id="currentYear"></span> 🌸 Saidi Talatala 🌸 | People's Blogs. All rights reserved</p>
   <p id="lastModifiedDate"></p>
