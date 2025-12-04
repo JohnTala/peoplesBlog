@@ -1,18 +1,16 @@
-// src/js/main.js
-import logo from '../images/logo.png';
+// ------------------ BASE PATH ------------------
+const BASE = "/peoplesBlog/";
 
-const headerEl = document.getElementById('header');
-const footerEl = document.getElementById('footer');
-
-// Detect base path (Vite dev vs production)
-const base = import.meta.env.PROD ? '/peoplesBlog/' : '/';
+// ------------------ ELEMENTS ------------------
+const headerEl = document.getElementById("header");
+const footerEl = document.getElementById("footer");
 
 // ------------------ HEADER ------------------
 headerEl.innerHTML = `
   <div class="navbar">
     <div class="logo">
-      <a href="${base}">
-        <img id="siteLogo" src="${logo}" alt="People's Blogs Logo" class="logo">
+      <a href="${BASE}src/index.html">
+        <img id="siteLogo" src="${BASE}src/images/logo.png" alt="People's Blogs Logo" class="logo">
       </a>
       <span>People's Blogs</span>
     </div>
@@ -21,32 +19,33 @@ headerEl.innerHTML = `
 
     <nav>
       <ul class="navigation">
-        <li><a href="${base}" class="nav-link">Home</a></li>
-        <li><a href="${base}pages/about.html" class="nav-link">About</a></li>
-        <li><a href="${base}pages/addForm.html" class="nav-link">Add Post</a></li>
-        <li><a href="${base}pages/reviews.html" class="nav-link">Reviews</a></li>
+        <li><a href="${BASE}src/index.html" class="nav-link">Home</a></li>
+        <li><a href="${BASE}src/about.html" class="nav-link">About</a></li>
+        <li><a href="${BASE}src/addForm.html" class="nav-link">Add Post</a></li>
+        <li><a href="${BASE}src/reviews.html" class="nav-link">Reviews</a></li>
       </ul>
     </nav>
   </div>
 `;
 
-// Mobile menu
-const menuBtn = document.getElementById('menu');
-const navList = document.querySelector('.navigation');
+// ------------------ MOBILE NAV ------------------
+const menuBtn = document.getElementById("menu");
+const navList = document.querySelector(".navigation");
 
 if (menuBtn && navList) {
-  menuBtn.addEventListener('click', () => {
-    navList.classList.toggle('show');
-    menuBtn.classList.toggle('show');
+  menuBtn.addEventListener("click", () => {
+    navList.classList.toggle("show");
+    menuBtn.classList.toggle("show");
   });
 }
 
-// Active nav link
-const currentPath = window.location.pathname.replace(base, '/');
-document.querySelectorAll('.nav-link').forEach(link => {
-  const linkPath = link.getAttribute('href').replace(base, '/');
-  if (currentPath === linkPath || (currentPath === '/' && linkPath === '/')) {
-    link.classList.add('active');
+// ------------------ ACTIVE LINK ------------------
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-link").forEach(link => {
+  const linkPage = link.getAttribute("href").split("/").pop();
+  if (currentPage === linkPage) {
+    link.classList.add("active");
   }
 });
 
@@ -56,6 +55,6 @@ footerEl.innerHTML = `
   <p id="lastModifiedDate"></p>
 `;
 
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-document.getElementById('lastModifiedDate').textContent =
-  'Last Modified: ' + document.lastModified;
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+document.getElementById("lastModifiedDate").textContent =
+  "Last Modified: " + document.lastModified;
