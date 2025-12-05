@@ -1,4 +1,6 @@
-/* Modern CSS theme for the About Blog page */
+/* ==========================
+   GLOBAL STYLES
+   ========================== */
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.8;
@@ -8,21 +10,158 @@ body {
     color: #2c3e50;
 }
 
-/* homepage */
-
-/* Headings */
 h1, h2, h3 {
     margin-top: 0;
     font-weight: 600;
     color: #333;
 }
-.logo {
-  width: 150px; /* adjust as needed */
-  height: auto;
-  display: block;
+
+/* ==========================
+   HEADER & NAVIGATION
+   ========================== */
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Search Form */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-nav {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* NAV MOBILE DEFAULT */
+nav {
+    width: 100%;
+    background: #36454f;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
+.navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none; /* hidden by default on mobile */
+    flex-direction: column;
+}
+
+.navigation.show {
+    display: flex;
+}
+
+.navigation li {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navigation li:last-child {
+    border-bottom: none;
+}
+
+nav a {
+    display: block;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background: #d6e4f0;
+    color: #000;
+}
+
+.active {
+    color: #ffd700;
+}
+
+/* Hamburger Button */
+#menu {
+    display: block;
+    font-size: 2rem;
+    background: #f0f0f0;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#menu.show::before {
+    content: "✕";
+}
+
+/* ==========================
+   DESKTOP STYLES
+   ========================== */
+@media (min-width: 740px) {
+    nav {
+        width: auto;
+        background: none;
+        margin-top: 0;
+    }
+
+    .navigation {
+        display: flex !important;
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .navigation li {
+        border: none;
+    }
+
+    nav a {
+        padding: 0.5rem 1rem;
+        color: #36454f;
+    }
+
+    nav a:hover {
+        background: #d6e4f0;
+        color: #000;
+        border-radius: 6px;
+    }
+
+    #menu {
+        display: none;
+    }
+}
+
+/* ==========================
+   BLOG PREVIEWS & CONTAINERS
+   ========================== */
+.preview, .previewblog, .aboutPost, .addFormpage, .review-form {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    border-radius: 16px;
+    padding: 30-40px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Preview links */
+.preview a {
+    color: #36cca2;
+    text-decoration: none;
+}
+
+/* ==========================
+   SEARCH FORM
+   ========================== */
 .search {
     margin: 30px auto 0 auto;
     max-width: 600px;
@@ -41,193 +180,53 @@ h1, h2, h3 {
 .search input[type="text"]:focus {
     outline: none;
     border-color: #1976d2;
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+    box-shadow: 0 4px 12px rgba(25,118,210,0.25);
 }
 
-/* Header */
-header {
-    background-color: #ffffff;
-    padding: 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-
+/* ==========================
+   FORMS (Add / Review)
+   ========================== */
+.addPost form, .review-form form {
     display: flex;
-    justify-content: space-between; /* LOGO LEFT / NAV RIGHT */
-    align-items: center;
+    flex-direction: column;
+    gap: 16-20px;
 }
 
-/* Navigation container */
-nav {
-    background-color: transparent; /* remove the full bar */
+.addPost input[type="text"], .addPost textarea,
+.review-form input, .review-form textarea, .review-form select {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    transition: border 0.3s, box-shadow 0.3s;
 }
 
-/* Navigation list */
-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;   /* horizontal menu */
-    gap: 2rem;             /* spacing between menu items */
-    margin: 0;
-    padding: 0;
+.addPost input:focus, .addPost textarea:focus,
+.review-form input:focus, .review-form textarea:focus, .review-form select:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 4px 12px rgba(25,118,210,0.2);
 }
 
-/* Navigation links */
-nav a {
-    color: #36454f;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 0;
-}
-
-nav a:hover {
-    color: #000;
-    background: none;
-}
-
-/* Active link highlight */
-.active {
-    color: #ffd700;
-}
-
-
-/* Hamburger */
-#menu {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.5rem 0.75rem;
-    background-color: #f0f0f0;
-    color: #000;
+.addPost button, .review-form button {
+    padding: 12-14px;
+    background-color: #1976d2;
+    color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-#menu::before {
-    content: " ";
+.addPost button:hover, .review-form button:hover {
+    background-color: #145ea8;
+    transform: translateY(-2px);
 }
 
-#menu.show::before {
-    content: "✕";
-}
-
-
-.navigation {
-    list-style: none;
-    margin: 0 auto;
-    max-width: 760px;
-}
-
-.navigation li {
-    display: none;
-}
-
-.show li {
-    display: block;
-}
-
-/* Larger Views */
-@media (min-width: 740px) {
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 70px; /* optional but makes it look premium */
-    }
-
-    nav ul {
-        flex-direction: row;
-        justify-content: flex-end;
-        gap: 2rem; /* spacing between items */
-    }
-
-    .navigation li {
-        display: block;
-    }
-
-    #menu {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-  .logo {
-    width: 120px;
-  }
-}
-
-/* Blog Post Previews */
-.preview {
-    margin: 40px auto;
-    max-width: 800px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.previewblog {
-    background: #f7f9fa;
-    color: #444;
-    padding: 16px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-
-/* Main Container */
-.aboutpage {
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: #ffffffee;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Header Section */
-.headpage {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-}
-
-.headpage h2 {
-    font-size: 2rem;
-    color: #37474f;
-    margin: 0;
-}
-
-/* About Page */
-
-.aboutPost {
-    max-width: 900px;
-    margin: 60px auto;
-    background-color: #ffffffee;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.aboutPost:hover {
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
-}
-
-.aboutPost p {
-    margin-bottom: 24px;
-    color: #37474f;
-    font-size: 1.05rem;
-}
-
-
-
+/* ==========================
+   FOOTER
+   ========================== */
 footer {
     background-color: #f9f9f9;
     text-align: center;
@@ -236,171 +235,22 @@ footer {
     color: #666;
     border-top: 1px solid #ddd;
     margin-top: 60px;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
-    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
 }
 
-
-/* Optional: subtle fade-in animation */
-.aboutPost {
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Addform */
-
-
-.addPost form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.addPost input[type="text"],
-.addPost textarea {
-    font-size: 1rem;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    resize: vertical;
-    transition: border 0.3s, box-shadow 0.3s;
-    font-family: inherit;
-}
-
-.addPost input[type="text"]:focus,
-.addPost textarea:focus {
-    outline: none;
-    border-color: #1976d2;
-    box-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
-}
-
-.addPost textarea {
-    min-height: 150px;
-}
-
-.addPost button {
-    padding: 12px 20px;
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.addPost button:hover {
-    background-color: #0d47a1;
-}
-
-
-/* review-form */
-.review-form,.addFormpage  {
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: #ffffffee;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-}
-
-
-/* Single Post Content */
-
-* {
-  transition: all 0.3s ease-in-out;
-}
-
-
-/* Review Form Section */
-.review-form {
-     max-width: 1000px;
-    margin: 40px auto;
-    background-color: #ffffffee;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-}
-
-.review-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-    color: #2c3e50;
-}
-
-.review-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.review-form label {
-    font-weight: 500;
-    color: #333;
-}
-
-.review-form input[type="text"],
-.review-form input[type="email"],
-.review-form select,
-.review-form textarea {
-    padding: 14px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: border 0.3s, box-shadow 0.3s;
-}
-
-.review-form input:focus,
-.review-form textarea:focus,
-.review-form select:focus {
-    border-color: #1976d2;
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
-    outline: none;
-}
-
-.review-form textarea {
-    resize: vertical;
-}
-
-.review-form button {
-    padding: 14px;
-    background-color: #1976d2;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(25, 118, 210, 0.25);
-    transition: background 0.3s, transform 0.2s;
-}
-
-.review-form button:hover {
-    background-color: #145ea8;
-    transform: translateY(-2px);
-}
-
-
-.review-form {
-    max-width: 900px;
-    margin: 40px auto;
-    background-color: #ffffffee;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #37474f;
-} 
-
-
+/* ==========================
+   ANIMATIONS
+   ========================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* ==========================
+   RESPONSIVE LOGO
+   ========================== */
+@media (max-width: 768px) {
+    .logo {
+        width: 120px;
+    }
+}
