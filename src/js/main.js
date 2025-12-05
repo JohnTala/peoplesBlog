@@ -2,17 +2,30 @@
 import logo from '../images/logo.png';
 
 const BASE = import.meta.env.PROD ? '/peoplesBlog/' : '/';
-const headerEl = document.getElementById('header');
-const footerEl = document.getElementById('footer');
+const headerEl = document.querySelector('header');
+const footerEl = document.querySelector('footer');
+
+
+/*<h1>People's Blogs</h1>
+    <!-- <a id="menu" href="#"></a> -->
+    <button id="menu" aria-label="Toggle navigation">&#9776;</button>
+
+	<nav>
+		<ul class="navigation">
+			<li><a href="index.html" class="active">Home</a></li>
+			<li><a href="about.html">About Page</a></li>
+			<li><a href="addForm.html">New Post</a></li>
+            <li><a href="reviews.html">Post Reviews</a></li>
+		</ul>
+	</nav>*/
 
 // HEADER
 headerEl.innerHTML = `
   <div class="navbar">
-    <div class="logo">
+    <div class="logo-nav">
       <a href="${BASE}index.html">
         <img id="siteLogo" src="${logo}" alt="People's Blogs Logo" class="logo">
       </a>
-      <span>People's Blogs</span>
     </div>
 
     <button id="menu" aria-label="Toggle navigation" class="menu-btn">&#9776;</button>

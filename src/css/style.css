@@ -45,7 +45,7 @@ h1, h2, h3 {
 }
 
 /* Header */
-#header
+header
  {
     background-color: #ffffff;
     display: grid;
@@ -117,6 +117,7 @@ nav a:hover {
     content: "✕";
 }
 
+
 .navigation {
     list-style: none;
     margin: 0 auto;
@@ -133,7 +134,7 @@ nav a:hover {
 
 /* Larger Views */
 @media (min-width: 740px) {
-    #header {
+    header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -231,7 +232,7 @@ nav a:hover {
 
 
 
-#footer {
+footer {
     background-color: #f9f9f9;
     text-align: center;
     padding: 30px 20px;
@@ -250,16 +251,6 @@ nav a:hover {
 }
 
 /* Addform */
-
-.addFormpage {
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: #ffffffee;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-}
 
 
 .addPost form {
@@ -307,7 +298,7 @@ nav a:hover {
 
 
 /* review-form */
-.review-form {
+.review-form,.addFormpage  {
     max-width: 1000px;
     margin: 40px auto;
     background-color: #ffffffee;
