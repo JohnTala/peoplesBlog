@@ -20,8 +20,14 @@ h1, h2, h3 {
    HEADER & NAVIGATION
    ========================== */
 header {
-    background-color: #ffffff;
+    /* background-color: #ffffff;
     padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
+    background-color: #ffffff;
+    display: grid;
+    grid-gap: 1rem;
+    padding: 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -89,6 +95,24 @@ nav a:hover {
     color: #ffd700;
 }
 
+/* Blog Post Previews */
+.preview {
+    margin: 40px auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.previewblog {
+    background: #f7f9fa;
+    color: #444;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
 /* Hamburger Button */
 #menu {
     display: block;
@@ -104,6 +128,18 @@ nav a:hover {
     content: "✕";
 }
 
+.review-form , .addPost, .aboutPost{
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffffee;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #37474f;
+} 
 /* ==========================
    DESKTOP STYLES
    ========================== */
@@ -189,53 +225,55 @@ nav a:hover {
 .addPost form, .review-form form {
     display: flex;
     flex-direction: column;
-    gap: 16-20px;
+    gap:20px;
 }
 
 .addPost input[type="text"], .addPost textarea,
 .review-form input, .review-form textarea, .review-form select {
+    font-size: 1rem;
     padding: 14px 16px;
     border-radius: 12px;
     border: 1px solid #ccc;
-    font-family: inherit;
+    resize: vertical;
     transition: border 0.3s, box-shadow 0.3s;
+    font-family: inherit;
 }
 
 .addPost input:focus, .addPost textarea:focus,
 .review-form input:focus, .review-form textarea:focus, .review-form select:focus {
-    outline: none;
+     outline: none;
     border-color: #1976d2;
-    box-shadow: 0 4px 12px rgba(25,118,210,0.2);
+    box-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
 }
 
 .addPost button, .review-form button {
-    padding: 12-14px;
+    padding: 12px 20px;
     background-color: #1976d2;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 12px;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s ease;
 }
 
 .addPost button:hover, .review-form button:hover {
-    background-color: #145ea8;
-    transform: translateY(-2px);
+     background-color: #0d47a1;
 }
 
 /* ==========================
    FOOTER
    ========================== */
 footer {
-    background-color: #f9f9f9;
+     background-color: #f9f9f9;
     text-align: center;
     padding: 30px 20px;
     font-size: 0.95rem;
     color: #666;
     border-top: 1px solid #ddd;
     margin-top: 60px;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* ==========================
