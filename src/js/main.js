@@ -6,18 +6,7 @@ const headerEl = document.querySelector('header');
 const footerEl = document.querySelector('footer');
 
 
-/*<h1>People's Blogs</h1>
-    <!-- <a id="menu" href="#"></a> -->
-    <button id="menu" aria-label="Toggle navigation">&#9776;</button>
 
-	<nav>
-		<ul class="navigation">
-			<li><a href="index.html" class="active">Home</a></li>
-			<li><a href="about.html">About Page</a></li>
-			<li><a href="addForm.html">New Post</a></li>
-            <li><a href="reviews.html">Post Reviews</a></li>
-		</ul>
-	</nav>*/
 
 // HEADER
 headerEl.innerHTML = `
