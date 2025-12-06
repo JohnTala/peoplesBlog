@@ -1,16 +1,23 @@
-const myPreview = document.querySelector('.preview');
-const my_url = `https://jsonplaceholder.typicode.com/posts/`;
+// src/js/index.mjs
 
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const resp = await fetch(my_url);
-        const data = await resp.json();
-        console.log(data[0].title);
+import { getPosts } from "./utils.js";
 
-        // Example: show first post title
-        //myPreview.textContent = data[0].title;
+const myPreview = document.querySelector(".preview");
+const my_url = "https://jsonplaceholder.typicode.com/posts/";
+const today=new Date();
+document.addEventListener("DOMContentLoaded", async () => {
+  const posts = await getPosts(my_url);
 
-    } catch (error) {
-        console.error("Fetch error:", error);
-    }
+  console.log(posts);
+
+  myPreview.innerHTML = posts
+    .map(post => `
+        <div class="preview_post" key=${post.id}>
+        <h2>${post.title}</h2>
+        <p>${post.body.slice(0,200)}...</p>
+       <a href="singlepost.html?id=${post.id}">Read More...</a>
+        <p><em>${today.toDateString()}</em></p>
+        </div>
+        `)
+    .join("");
 });
