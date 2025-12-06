@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   singlePostEl.innerHTML = `
-    <article class="post">
+    <article class="single-post">
       <h2>${post.title}</h2>
       <p>${post.body}</p>
-      <a href="index.html" class="back-btn">← Back to Homepage</a>
+      <a href="index.html" class="back-btn">Back to Homepage</a>
     </article>
   `;
 });

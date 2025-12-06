@@ -114,6 +114,8 @@ nav a:hover {
   border-radius: 5px;
   margin-bottom: 8px;
 }
+
+
 .previewblog {
     background: #f7f9fa;
     color: #444;
@@ -137,7 +139,7 @@ nav a:hover {
     content: "✕";
 }
 
-.review-form , .addPost, .aboutPost{
+.review-form , .addPost, .aboutPost,.single-post{
     max-width: 900px;
     margin: 40px auto;
     background-color: #ffffffee;
