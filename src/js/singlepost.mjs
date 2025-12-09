@@ -3,6 +3,8 @@ import { getPosts } from "./utils.js";
 
 const singlePostEl = document.querySelector(".single-post");
 const API_URL = "https://jsonplaceholder.typicode.com/posts/";
+ const deleteBtn = document.querySelector(".delete-btn");
+
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
@@ -30,8 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     </article>
   `;
 
-  const deleteBtn = document.querySelector(".delete-btn");
-
+ 
   deleteBtn.addEventListener("click", async () => {
     if (!confirm("Are you sure you want to delete this post?")) return;
 
