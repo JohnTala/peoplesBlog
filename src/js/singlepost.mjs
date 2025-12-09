@@ -3,8 +3,6 @@ import { getPosts } from "./utils.js";
 
 const singlePostEl = document.querySelector(".single-post");
 const API_URL = "https://jsonplaceholder.typicode.com/posts/";
- const deleteBtn = document.querySelector(".delete-btn");
-
 
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
@@ -32,7 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     </article>
   `;
 
- 
+  const deleteBtn = document.querySelector(".delete-btn");
+
   deleteBtn.addEventListener("click", async () => {
     if (!confirm("Are you sure you want to delete this post?")) return;
 
@@ -41,15 +40,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         method: "DELETE",
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete post");
-      }
+      if (!response.ok) throw new Error("Delete failed");
 
-      alert("Post deleted successfully!");
-      window.location.href = "index.html"; // redirect to homepage
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong while deleting.");
+      alert("Post deleted!");
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete post.");
     }
   });
 });
