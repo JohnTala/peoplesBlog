@@ -26,6 +26,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h2>${post.title}</h2>
       <p>${post.body}</p>
       <a href="index.html" class="back-btn">Back to Homepage</a>
+      <button class="delete-btn">Delete</button>
     </article>
   `;
+
+  const deleteBtn = document.querySelector(".delete-btn");
+
+  deleteBtn.addEventListener("click", async () => {
+    if (!confirm("Are you sure you want to delete this post?")) return;
+
+    try {
+      const response = await fetch(API_URL + postId, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete post");
+      }
+
+      alert("Post deleted successfully!");
+      window.location.href = "index.html"; // redirect to homepage
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while deleting.");
+    }
+  });
 });

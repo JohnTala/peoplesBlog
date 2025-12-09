@@ -31,7 +31,7 @@ function renderPosts(posts){
       (post) => `
         <div class="preview_post" key=${post.id}>
           <h2>${post.title}</h2>
-          <p>${post.body.slice(0, 200)}...</p>
+          <p>${post.body.slice(0, 100)}...</p>
           <a href="singlepost.html?id=${post.id}">Read More...</a>
           <p><em>${today.toDateString()}</em></p>
         </div>
