@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //save to localstorage
   localStorage.setItem("posts",JSON.stringify(posts))
-  renderPosts(posts);
+
+  renderPosts(posts)
 });
 
 function renderPosts(posts){
