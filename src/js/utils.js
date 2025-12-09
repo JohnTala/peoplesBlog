@@ -4,7 +4,7 @@ export async function getPosts(url) {
     const resp = await fetch(url);
     return await resp.json();
   } catch (err) {
-    console.error("Fetch error:", err);
+    console.error("No data retrieved", err);
     return [];
   }
 }

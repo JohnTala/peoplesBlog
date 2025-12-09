@@ -6,12 +6,27 @@ const my_url = "https://jsonplaceholder.typicode.com/posts/";
 const today = new Date();
 
 document.addEventListener("DOMContentLoaded", async () => {
-  
+
+  //try to load from localStorage
+  const cached_posts=localStorage.getItem("posts")
+  if(cached_posts){
+    const posts=JSON.parse(cached_posts)
+    renderPosts(posts)
+  }
+
+  //fetch from Api
   const posts = await getPosts(my_url);
 
-  console.log(posts);
+  //save to LocalStorage
+  localStorage.setItem("posts",JSON.stringify(posts))
 
-  myPreview.innerHTML = posts
+  renderPosts(posts)
+
+  
+});
+
+function renderPosts(posts){
+ myPreview.innerHTML = posts
     .map(
       (post) => `
         <div class="preview_post" key=${post.id}>
@@ -23,4 +38,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       `
     )
     .join("");
-});
+}
