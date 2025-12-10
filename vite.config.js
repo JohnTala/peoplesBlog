@@ -17,6 +17,7 @@ export default defineConfig({
         addForm: resolve(__dirname, 'src/addForm.html'),
         reviews: resolve(__dirname, 'src/reviews.html'),
         singlepost: resolve(__dirname, 'src/singlepost.html'), // lowercase matches file
+        display:resolve(__dirname,'src/display.html'),
       },
     },
   },
