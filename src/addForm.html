@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="module" src="js/main.js" defer></script>
+  <script type="module" src="js/addForm.mjs" defer></script>
 </head>
 <body>
   <header></header>
@@ -22,11 +23,11 @@
         <input type="text" id="title" name="title" placeholder="Title here" required>
 
         <label for="content">Post Content</label>
-        <textarea id="content" name="content" placeholder="Write your post..." required></textarea>
+        <textarea id="body" name="body" placeholder="Write your post..." required></textarea>
 
         <button type="submit">Add Post</button>
       </form>
-      <div class="preview" id="postPreview"></div>
+      <!-- <div class="preview" id="postPreview"></div> -->
     </div>
     </div>
   </main>
