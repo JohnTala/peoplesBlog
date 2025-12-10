@@ -2,31 +2,31 @@
 import { getPosts } from "./utils.js";
 
 const form = document.querySelector(".postForm");
-const API = "https://jsonplaceholder.typicode.com/posts/";
+const API_URL = "https://jsonplaceholder.typicode.com/posts/";
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const title = form.title.value;
-  const body = form.body.value;
+  const newPost = {
+    title: form.title.value,
+    body: form.body.value,
+    timestamp: Date.now(),
+  };
 
-  const newPost = { title, body };
-
-  // Send to API (fake, but OK)
-  const created = await getPosts(API, {
+  // Send to API (fake API always returns an object with id: 101)
+  const created = await getPosts(API_URL, {
     method: "POST",
     body: JSON.stringify(newPost),
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json" },
   });
 
-  // Give post a simple ID
-  newPost.id = created.id || Date.now();
+  // Use API ID or fallback
+  newPost.id = created?.id || Date.now();
 
-  // Store locally
-  const stored = JSON.parse(localStorage.getItem("posts")) || [];
-  stored.push(newPost);
-  localStorage.setItem("posts", JSON.stringify(stored));
+  // Save to localStorage
+  const existing = JSON.parse(localStorage.getItem("localPosts")) || [];
+  existing.push(newPost);
+  localStorage.setItem("localPosts", JSON.stringify(existing));
 
-  // Go home
   window.location.href = "index.html";
 });

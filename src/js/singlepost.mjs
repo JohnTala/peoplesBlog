@@ -1,29 +1,60 @@
 // singlePost.mjs
+import { getPosts} from "./utils.js";
+
 const container = document.querySelector(".single-post");
+const API_URL = "https://jsonplaceholder.typicode.com/posts/";
 
 const params = new URLSearchParams(window.location.search);
-const id = Number(params.get("id"));
+const postId = Number(params.get("id"));
 
-const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-const post = posts[id];
-
-if (!post) {
-  container.innerHTML = "<p>Post not found.</p>";
-} else {
-  container.innerHTML = `
-    <h2>${post.title}</h2>
-    <p>${post.body}</p>
-    <a href="index.html">← Back</a>
-    <button class="delete">Delete</button>
-  `;
+if (!postId) {
+  container.innerHTML = `<p>Invalid Post.</p>`;
 }
 
-// Delete post
-document.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("delete")) return;
+document.addEventListener("DOMContentLoaded", async () => {
+  
+  // Load local posts
+  const localPosts = JSON.parse(localStorage.getItem("localPosts")) || [];
+  let post = localPosts.find((p) => p.id === postId);
 
-  posts.splice(id, 1);
-  localStorage.setItem("posts", JSON.stringify(posts));
-  window.location.href = "index.html";
+  // If not in localStorage → load from API
+  if (!post) {
+    const apiPost = await getPosts(API_URL + postId);
+    post = apiPost;
+  }
+
+  if (!post) {
+    container.innerHTML = `<p>Post not found.</p>`;
+    return;
+  }
+
+  // Render post
+  container.innerHTML = `
+    <article class="singlePostCard">
+      <h2>${post.title}</h2>
+      <p>${post.body}</p>
+      <a href="index.html" class="back-btn">← Back</a>
+      ${
+        // Only local posts can be deleted
+        localPosts.some(p => p.id === postId)
+          ? `<button class="delete-btn">Delete</button>`
+          : ``
+      }
+    </article>
+  `;
+
+  // Delete button logic (local only)
+  const deleteBtn = document.querySelector(".delete-btn");
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", () => {
+      if (!confirm("Delete this post?")) return;
+
+      const updated = localPosts.filter((p) => p.id !== postId);
+      localStorage.setItem("localPosts", JSON.stringify(updated));
+
+      alert("Post deleted!");
+      window.location.href = "index.html";
+    });
+  }
 });
