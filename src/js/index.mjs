@@ -1,41 +1,29 @@
+// index.mjs
+import { getPosts} from "./utils.js";
 
-import { getPosts } from "./utils.js";
-
-const myPreview = document.querySelector(".preview");
-const my_url = "https://jsonplaceholder.typicode.com/posts/";
-const today = new Date();
+const preview = document.querySelector(".preview");
+const API = "https://jsonplaceholder.typicode.com/posts/";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  let posts = JSON.parse(localStorage.getItem("posts"));
 
-  //try to load from localStorage
-  const cached_posts=localStorage.getItem("posts")
-  if(cached_posts){
-    const posts=JSON.parse(cached_posts)
-    renderPosts(posts)
+  // If no local posts → fetch from API once
+  if (!posts) {
+    posts = await getPosts(API);
+    localStorage.setItem("posts", JSON.stringify(posts));
   }
 
-  //fetch from Api
-  const posts = await getPosts(my_url);
-
-  //save to LocalStorage
-  localStorage.setItem("posts",JSON.stringify(posts))
-
-  renderPosts(posts)
-
-  
+  render(posts);
 });
 
-function renderPosts(posts){
- myPreview.innerHTML = posts
-    .map(
-      (post) => `
-        <div class="preview_post" key=${post.id}>
-          <h2>${post.title}</h2>
-          <p>${post.body.slice(0, 100)}...</p>
-          <a href="singlepost.html?id=${post.id}">Read More...</a>
-          <p><em>${today.toDateString()}</em></p>
-        </div>
-      `
-    )
+function render(posts) {
+  preview.innerHTML = posts
+    .map((p, index) => `
+      <div class="postCard">
+        <h2>${p.title}</h2>
+        <p>${p.body.slice(0, 80)}...</p>
+        <a href="singlePost.html?id=${index}">Read More</a>
+      </div>
+    `)
     .join("");
 }

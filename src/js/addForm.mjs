@@ -1,24 +1,32 @@
-import{getPosts} from '.utils.js';
-const myForm=document.querySelector('.postForm');
+// addForm.mjs
+import { getPosts } from "./utils.js";
 
-const url=`https://jsonplaceholder.typicode.com/posts/`;
+const form = document.querySelector(".postForm");
+const API = "https://jsonplaceholder.typicode.com/posts/";
 
-const createPosts=async (e)=>{
-    e.preventDefault()
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const obj={
-           title:myForm.title.value,
-           body:myForm.body.value
-    }
+  const title = form.title.value;
+  const body = form.body.value;
 
-    const posts=await getPosts(url,{
-        method:'POST',
-        body: JSON.stringify(obj),
-          headers: { 'Content-Type': 'application/json' }
-    });
-     window.location.replace('/');//redirect to homepAGE
+  const newPost = { title, body };
 
-}
+  // Send to API (fake, but OK)
+  const created = await getPosts(API, {
+    method: "POST",
+    body: JSON.stringify(newPost),
+    headers: { "Content-Type": "application/json" }
+  });
 
-myForm.addEventListener('submit',createPosts);
+  // Give post a simple ID
+  newPost.id = created.id || Date.now();
 
+  // Store locally
+  const stored = JSON.parse(localStorage.getItem("posts")) || [];
+  stored.push(newPost);
+  localStorage.setItem("posts", JSON.stringify(stored));
+
+  // Go home
+  window.location.href = "index.html";
+});

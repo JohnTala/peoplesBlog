@@ -1,10 +1,10 @@
-// src/js/utils.js
-export async function getPosts(url) {
+// utils.js
+export async function getPosts(url, options = {}) {
   try {
-    const resp = await fetch(url);
+    const resp = await fetch(url, options);
     return await resp.json();
   } catch (err) {
-    console.error("No data retrieved", err);
-    return [];
+    console.error("Request failed", err);
+    return null;
   }
 }
